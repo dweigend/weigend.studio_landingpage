@@ -1,0 +1,274 @@
+/* 🎨 Base styles */
+@font-face {
+    font-family: 'Micro5';
+    src: url('../fonts/Micro5-Regular.ttf') format('truetype');
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Micro5', monospace;
+    overflow: hidden;
+}
+
+/* 🖥️ Terminal container */
+#terminal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+    background: #000000;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 📝 Terminal output */
+#terminal-output {
+    white-space: pre;
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+    line-height: 1.2;
+}
+
+/* 🎨 ASCII art styling */
+#terminal-output .ascii-art {
+    font-family: 'Courier New', monospace;
+}
+
+/* 📟 Terminal text styling */
+#terminal-output .terminal-text {
+    font-family: 'Micro5', monospace;
+}
+
+/* ⌨️ Terminal input */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background: #000000;
+    border-top: 1px solid #333;
+}
+
+/* 💡 Terminal prompt */
+#terminal-prompt {
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* 📝 Input field */
+#terminal-input {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-family: 'Micro5', monospace;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    padding: 0;
+}
+
+/* ⚡ Cursor animation */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: #ffffff;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* 🔗 Links */
+.command-link {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px 0;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.command-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 5px #ffffff;
+}
+
+.command-link::before {
+    content: '> ';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.command-link:hover::before {
+    opacity: 1;
+}
+
+/* 📧 Email popup */
+.email-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.email-popup.active {
+    display: flex;
+}
+
+/* 📋 Email form */
+.email-form {
+    background: #000;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+
+/* 🖥️ Screen elements */
+.screen {
+    border: 1px solid #ffffff;
+    padding: 20px;
+    margin: 0;
+    background: #000;
+}
+
+.screen-header {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.screen-footer {
+    border-top: 1px solid #ffffff;
+    padding-top: 15px;
+    margin-top: 20px;
+    text-align: right;
+    font-size: 12px;
+}
+
+/* 📝 Message input */
+textarea {
+    width: 100%;
+    height: 150px;
+    background: #000;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 15px;
+    font-family: 'Micro5', monospace;
+    resize: none;
+    outline: none;
+    font-size: 14px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+/* 🎮 Buttons */
+.popup-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* 🔘 Button styles */
+.btn {
+    background: #000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: 'Micro5', monospace;
+    font-size: 14px;
+    min-width: 100px;
+    text-transform: lowercase;
+}
+
+.btn:hover {
+    background: #ffffff;
+    color: #000;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* 📊 Character counter */
+#charCount {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Status message */
+.status-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #ffffff;
+    display: none;
+    font-family: 'Micro5', monospace;
+    z-index: 1001;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #terminal-container {
+        width: 95%;
+        height: 90vh;
+        padding: 10px;
+    }
+    
+    #terminal-output {
+        font-size: 14px;
+        padding: 5px;
+    }
+    
+    #terminal-input {
+        font-size: 14px;
+    }
+    
+    .email-form {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    textarea {
+        height: 120px;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        min-width: 60px;
+    }
+}
